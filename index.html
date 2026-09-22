@@ -14,13 +14,18 @@
     body { margin: 0; background: #fff6e9; color: var(--ink); font-family: "Urbanist", sans-serif; font-size: 18px; line-height: 1.8; }
     body::before { content: ""; display: block; height: 7px; background: var(--accent); }
     main { max-width: 1050px; margin: 0 auto; padding: 0 48px 64px; }
-    .site-header { max-width: 1050px; margin: 0 auto; padding: 42px 48px 58px; }
-    .layout { display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: 68px; align-items: start; }
+    .site-header { max-width: 1050px; margin: 0 auto; padding: 90px 48px 44px; }
+    .layout { display: grid; grid-template-columns: 270px minmax(0, 1fr); column-gap: 68px; row-gap: 0; align-items: start; }
     figure { margin: 0; }
+    .layout > figure { position: relative; align-self: stretch; min-height: 324px; }
+    .layout > figure > img { position: absolute; inset: 0; height: 100%; }
+    .layout > article { display: contents; }
+    .bio, .profile-links { grid-column: 2; }
+    .bio p:last-child { margin-bottom: 0; }
     img { display: block; width: 100%; height: auto; aspect-ratio: 5 / 6; object-fit: cover; object-position: center 35%; border-radius: 3px; }
-    .photo-rule { width: 54px; height: 4px; background: var(--accent); margin-top: 22px; }
+    .photo-rule { width: 54px; height: 4px; background: var(--accent); margin-top: 22px; position: absolute; top: 100%; }
     h1 { font-size: clamp(40px, 5.5vw, 56px); line-height: 1.2; font-weight: 700; letter-spacing: -0.5px; margin: 0; color: var(--accent); text-shadow: 1px 1px 0 #55723c, 2px 2px 0 #55723c, 3px 3px 0 #55723c, 4px 4px 0 #55723c, 5px 5px 0 #55723c; }
-    .affiliation { color: var(--muted); line-height: 1.65; margin: 0 0 35px; font-size: 16px; }
+    .affiliation { color: var(--muted); line-height: 1.65; margin: 18px 0 0; font-size: 16px; }
     p { margin: 0 0 22px; }
     strong { font-weight: 600; }
     a { color: var(--link); text-underline-offset: 5px; text-decoration-thickness: 1px; }
@@ -46,11 +51,16 @@
     .paper-links { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 12px; font-size: 16px; }
     @media (max-width: 760px) {
       main { padding: 0 25px 48px; }
-      .site-header { padding: 30px 25px 35px; }
+      .site-header { padding: 62px 25px 35px; }
       .layout { grid-template-columns: 1fr; gap: 38px; }
       figure { width: min(64%, 250px); }
+      .layout > figure { min-height: 0; }
+      .layout > figure > img { position: static; height: auto; }
+      .layout > article { display: block; }
+      .bio, .profile-links { grid-column: auto; }
+      .photo-rule { position: static; }
       h1 { margin-top: 0; }
-      .affiliation { margin-bottom: 26px; }
+      .affiliation { margin: 18px 0 0; }
       .content-section { margin-top: 42px; }
       .updates { padding: 22px; }
       .research-item { grid-template-columns: 150px minmax(0, 1fr); gap: 24px; }
@@ -62,7 +72,10 @@
   </style>
 </head>
 <body>
-  <header class="site-header"><h1 id="name">Renee Ziqi Zhu</h1></header>
+  <header class="site-header">
+    <h1 id="name">Renee Ziqi Zhu</h1>
+    <p class="affiliation">Ph.D. student · Human–Computer Interaction<br>Indiana University Bloomington · Bloomington, IN, USA</p>
+  </header>
   <main>
     <div class="layout">
       <figure>
@@ -70,9 +83,10 @@
         <div class="photo-rule" aria-hidden="true"></div>
       </figure>
       <article aria-labelledby="name">
-        <p class="affiliation">Ph.D. student · Human–Computer Interaction<br>Indiana University Bloomington<br>Bloomington, IN, USA</p>
+        <div class="bio">
         <p>I am a Ph.D. student at Indiana University Bloomington, working in human-computer interaction (HCI). My research focuses on <strong>human–AI relationships</strong>, particularly AI companionship and intimacy.</p>
         <p>I study how people form and shape relationships with AI agents through customization and everyday interaction. I am particularly interested in <strong>power dynamics and relationship configuration</strong>: how people shape an AI’s apparent personality and relational role, and how these interactions influence their own sense of agency and connection. My work draws on interviews and participatory design to explore how people experience and navigate relationships with AI agents.</p>
+        </div>
         <nav class="profile-links" aria-label="Profile links"><a href="CV_Renee_Ziqi_Zhu.pdf" target="_blank" rel="noopener">CV</a><a href="https://github.com/reneezzz">GitHub</a><a href="https://scholar.google.com/citations?user=ERGEsiQAAAAJ">Google Scholar</a></nav>
       </article>
     </div>
